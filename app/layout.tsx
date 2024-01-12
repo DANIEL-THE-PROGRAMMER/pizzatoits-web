@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import { Navbar } from './components/navbar'
+import MouseContextProvider from './context/globalcontext'
+import DotRing from './components/customcursor'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,8 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.variable}`}>
-        <Navbar />
-        {children}
+        <MouseContextProvider>
+          <DotRing />
+          <Navbar />
+          {children}
+        </MouseContextProvider>
       </body>
     </html>
   )

@@ -24,3 +24,19 @@
 body {
   background-color: #f2f1e4;
 }
+
+.cursor{
+  position: fixed;
+  top: 400px;
+  left: 400px;
+  width: 10px;
+  height: 10px;
+  background: #184dc4;
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease-out;
+  transition-property: width, height, border;
+  will-change: width, height, transform, border;
+  pointer-events: none;
+  z-index: 999;
+}

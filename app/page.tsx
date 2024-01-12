@@ -1,7 +1,10 @@
-import Image from 'next/image'
+import { Gallery } from "./components/section/gallery"
+
 
 export default function Home() {
   return (
-    <></>
+    <>
+      <Gallery />
+    </>
   )
 }

@@ -15,7 +15,7 @@ export const Navbar = () => {
             Contatti
           </span>
           <span className="absolute h-full translate-y-[100%] group-hover:translate-y-0 flex items-center group-hover:transition-transform duration-[.5s] text-white ease-[cubic-bezier((.19,1,.22,1)]">
-          Contatti
+            Contatti
           </span>
         </button>
       </div>
