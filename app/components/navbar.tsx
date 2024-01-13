@@ -1,7 +1,7 @@
 export const Navbar = () => {
   return (
-    <>
-      <div className="h-[123px] flex items-center justify-between px-[40px] relative z-10">
+    <div className="">
+      <div className="h-[123px] flex items-center justify-between px-[40px] relative z-10 ">
         <button className="group ouline-none flex items-center justify-center w-[111px] h-[47px] rounded-[10rem] text-textb font-neue border-[1px] border-accent bg-white text-2xl px-[3.5rem] transition-colors relative duration-[.5s] hover:bg-accent overflow-hidden ease-[cubic-bezier((.19,1,.22,1)]">
           <span className="absolute h-full flex items-center group-hover:translate-y-[-100%] group-hover:transition-transform duration-[.5s] ease-[cubic-bezier((.19,1,.22,1)]">
             Menu
@@ -75,6 +75,6 @@ export const Navbar = () => {
           ></path>
         </svg>
       </div>
-    </>
+    </div>
   );
 };

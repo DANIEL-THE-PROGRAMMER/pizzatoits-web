@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        clamp: "clamp(60px,14vw,280px)",
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -15,6 +18,7 @@ const config: Config = {
       },
       fontFamily: {
         neue: ['var(--font-neue)'],
+        dusk: ['var(--font-dusk)']
       },
       colors: {
         accent: 'rgba(var(--c-accent), <alpha-value>)',

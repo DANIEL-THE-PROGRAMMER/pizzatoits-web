@@ -1,6 +1,12 @@
 import Image from "next/image";
 
 export const Gallery = () => {
+
+    const Articles : string[] = [
+        "Bathroom furniture", "plant engineering," ,"treatment of water" ,"And", "comfort", "environment:" ,"self" ,"that,", "That" ,"circles", "And", "a", "service,", "business suit,", "maximum quality", "And", "professionalism," ,"six", "In the", "place", "Right.", "In the", "years", "we are",  "become", "The", "point", "Of", "reference", "For", "private", "And", "professionals", "That", "they seek", "solutions", "personalized", "reliable", "For", "the environment", "domestic", "And", "corporate."
+    ]
+    
+
   return (
     <>
       <div className="w-[95vw] mx-auto mb-[90px] flex gap-[40px] h-[916px] overflow-hidden border-b-[1px] border-accent">
@@ -17,6 +23,13 @@ export const Gallery = () => {
           <Image src="/assets/3.webp" alt="3" sizes="100%" fill={true} />
         </div>
       </div>
+        <div className="flex fon">
+            { Articles.map((word, index) => {
+                return (
+                    <div className=""></div>
+                )
+            }) } 
+        </div>
     </>
   );
 };
