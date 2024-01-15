@@ -15,6 +15,7 @@ html{
   --c-filter:133, 166, 234;
   --c-bg:242, 241, 228;
   --swiper-theme-color:0, 122, 255;
+  --text-w:242, 241, 228;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,8 +26,9 @@ html{
   }
 }
 
-body {
-  background-color: #f2f1e4;
+.logo{
+  width:94vw;
+  margin: 0 auto;
 }
 
 .cursor{

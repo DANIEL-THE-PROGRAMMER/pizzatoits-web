@@ -34,7 +34,6 @@ export default function RootLayout({
       <body className={`${font.variable} ${dusk.variable}`}>
         <MouseContextProvider>
           <DotRing />
-          <Navbar />
           {children}
         </MouseContextProvider>
       </body>

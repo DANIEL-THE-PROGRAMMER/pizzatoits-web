@@ -22,6 +22,7 @@ const config: Config = {
       },
       colors: {
         accent: 'rgba(var(--c-accent), <alpha-value>)',
+        textw: 'rgba(var(--text-w), <alpha-value>)',
         textb: 'rgba(var(--c-text), <alpha-value>)',
         filter: 'rgba(var(--c-filter), <alpha-value>)',
         bgcolor: 'rgba(var(--c-bg), <alpha-value>)',
