@@ -24,10 +24,10 @@ export const MenuLinks = ({
         <div className="flex flex-col gap-[0.5rem]">
           {links.map((link, index) => {
             return (
-              <>
+              <span key={index}>
                 <Link
-                  href="/"
-                  key={index}
+                  href="/about"
+                  
                   className={`
                     group text-[56px] relative after:capitalize after:content-['${link}'] after:absolute after:left-0 after:translate-y-[100%] hover:after:translate-y-[0%]  after:transition-all after:duration-[0.75s] after:ease-[cubic-bezier((.19,1,.22,1)] overflow-hidden capitalize`
                   }
@@ -36,7 +36,7 @@ export const MenuLinks = ({
                     {link}
                   </span>
                 </Link>
-              </>
+              </span>
             );
           })}
         </div>

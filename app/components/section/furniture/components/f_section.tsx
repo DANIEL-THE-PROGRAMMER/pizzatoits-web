@@ -17,8 +17,7 @@ export const FurnitureSection = ({
 
   useEffect(() => {
     if (ref.current && ref2.current) {
-      console.log(ref);
-      console.log("ref2", ref2);
+    
     }
   });
 

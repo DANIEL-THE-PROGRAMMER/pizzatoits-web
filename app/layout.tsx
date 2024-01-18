@@ -1,12 +1,10 @@
-'use client'
 
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
-import { Navbar } from './components/navbar'
 import MouseContextProvider from './context/globalcontext'
 import DotRing from './components/customcursor'
-import { useMouseHoverAndMenuContext } from './context/globalcontext'
+import { Loader } from './components/loader'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -29,14 +27,12 @@ export default function RootLayout({
 }) {
 
   
-const {isPreloading} = useMouseHoverAndMenuContext()
-
-
   return (
     <html lang="en">
       <body className={`${font.variable} ${dusk.variable}`}>
         <div>
         <MouseContextProvider>
+          <Loader />
           <DotRing />
           {children}
         </MouseContextProvider>

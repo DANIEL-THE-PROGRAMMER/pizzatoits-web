@@ -1,15 +1,26 @@
+"use client";
+
 import { Logo } from "./svgs/logos";
 import { useMouseHoverAndMenuContext } from "../context/globalcontext";
+import Link from "next/link";
+import { GetPageNumber, Sleep } from "../utils/helper";
 
 export const Navbar = () => {
+  const { setOpen, changePage, isLoading } = useMouseHoverAndMenuContext();
 
-
-  const {  setOpen } = useMouseHoverAndMenuContext()
+  const handleClick = async (page: string) => {
+    const pageNumber = GetPageNumber(page);
+    changePage(pageNumber);
+    isLoading(true);
+  };
 
   return (
     <div className="">
       <div className="h-[123px] flex items-center justify-between px-[40px] relative z-10 ">
-        <button className="group ouline-none flex items-center justify-center w-[111px] h-[47px] rounded-[10rem] text-textb font-neue border-[1px] border-accent bg-white text-2xl px-[3.5rem] transition-colors relative duration-[.5s] hover:bg-accent overflow-hidden ease-[cubic-bezier((.19,1,.22,1)]" onClick={() => setOpen(true)}>
+        <button
+          className="group ouline-none flex items-center justify-center w-[111px] h-[47px] rounded-[10rem] text-textb font-neue border-[1px] border-accent bg-white text-2xl px-[3.5rem] transition-colors relative duration-[.5s] hover:bg-accent overflow-hidden ease-[cubic-bezier((.19,1,.22,1)]"
+          onClick={() => setOpen(true)}
+        >
           <span className="absolute h-full flex items-center group-hover:translate-y-[-100%] group-hover:transition-transform duration-[.5s] ease-[cubic-bezier((.19,1,.22,1)]">
             Menu
           </span>
@@ -36,7 +47,9 @@ export const Navbar = () => {
       <div className="mb-[28px] px-[40px]">
         <div className="bg-accent h-[1px]" />
       </div>
-      <Logo />
+      <div onClick={(e) => handleClick("about")}>
+        <Logo />
+      </div>
     </div>
   );
 };

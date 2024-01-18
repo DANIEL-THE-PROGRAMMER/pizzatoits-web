@@ -7,6 +7,7 @@ import { AsideMenu } from "./components/asidemenu/asidemenu";
 import { Navbar } from "./components/navbar";
 import { useMouseHoverAndMenuContext } from "./context/globalcontext";
 import { Preloader } from "./components/preloader";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
   const { isOpen, isPreloading, loadPage } = useMouseHoverAndMenuContext();
@@ -20,8 +21,6 @@ export default function Home() {
         ? "translate3d(0px, 100vh, 0px)"
         : "translate3d(0px, 0px, 0px)",
   };
-
-  console.log(loadPage);
 
   return (
     <>
