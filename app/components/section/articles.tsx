@@ -1,3 +1,5 @@
+import { MotionDiv } from "../motion/motion";
+
 export const Articles = () => {
   const Sentences: string[] = [
     "Bathroom furniture,",
@@ -7,7 +9,7 @@ export const Articles = () => {
     "comfort ",
     "environment:",
     "self ",
-    "that, ", 
+    "that, ",
     "That ",
     "circles ",
     "And ",
@@ -50,10 +52,10 @@ export const Articles = () => {
       {Sentences.map((word, index) => {
         return (
           <span
-            className="leading-[100%] pb-[5px] whitespace-break-spaces inline-block min-h-[10px]"
+            className="leading-[100%] pb-[5px] whitespace-break-spaces inline-block min-h-[10px] overflow-hidden"
             key={index}
           >
-            {word}
+            <MotionDiv >{word}</MotionDiv>
           </span>
         );
       })}

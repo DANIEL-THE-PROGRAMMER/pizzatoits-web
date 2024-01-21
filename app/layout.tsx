@@ -4,7 +4,8 @@ import localFont from 'next/font/local'
 import './globals.css'
 import MouseContextProvider from './context/globalcontext'
 import DotRing from './components/customcursor'
-import { Loader } from './components/loader'
+import { Loader } from './components/loader/loader'
+import SmoothScroll from './components/smoothscroll'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -30,13 +31,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.variable} ${dusk.variable}`}>
-        <div>
         <MouseContextProvider>
           <Loader />
+          <SmoothScroll>
           <DotRing />
-          {children}
+            {children}
+          </SmoothScroll>
         </MouseContextProvider>
-        </div>
       </body>
     </html>
   )
