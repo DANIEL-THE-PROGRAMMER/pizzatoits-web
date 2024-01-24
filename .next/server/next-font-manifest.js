@@ -1,1 +1,1 @@
-self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{},\"appUsingSizeAdjust\":false,\"pagesUsingSizeAdjust\":false}"
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/danieltheprogrammer/youtube_speedcode/pizzatoits-web/app/layout\":[\"static/media/c9a5bc6a7c948fb0-s.p.woff2\",\"static/media/cbab294b5e6d3fe8-s.p.otf\",\"static/media/b755838d3028ac33-s.p.otf\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"
