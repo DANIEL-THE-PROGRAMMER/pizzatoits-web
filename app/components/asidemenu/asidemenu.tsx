@@ -4,10 +4,25 @@ import { MenuLogo } from "../svgs/logos";
 import Link from "next/link";
 import { MenuLinks } from "./meulink";
 import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";
+import { useEffect } from "react";
 
 export const AsideMenu = () => {
 
-  const { isOpen, setOpen } = useMouseHoverAndMenuContext()
+  const { isOpen, setOpen, onCusor } = useMouseHoverAndMenuContext()
+
+  const handleMouseEnter = () => {
+    const cursor = document.querySelector('.cursor')
+    if(cursor){
+      cursor.classList.add('asidemenu')
+    }
+  }
+
+  const handleMouseLeave = () => {
+    const cursor = document.querySelector('.cursor')
+    if(cursor){
+      cursor.classList.remove('asidemenu')
+    }
+  }
 
   const style = {
     translate: "none",
@@ -16,10 +31,21 @@ export const AsideMenu = () => {
     transform: isOpen ? "translate3d(0px, 0px, 0px)" : "translateY(-100%)",
   };
 
+  useEffect(() => {
+    const body = document.getElementsByTagName('body')[0]
+    if(isOpen) {
+      body.style.overflow = "hidden"
+    }else {
+      body.style.overflow = "scroll"
+    }
+  },[isOpen])
+
   return (
     <aside
       style={style}
       className="fixed w-[100vw] h-[100vh] top-0 bg-accent flex flex-col justify-between will-change-transform duration-[.5s] ease-[cubic-bezier((.19,1,.22,1)]"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="">
         <div className="h-[123px] flex items-center justify-between px-[40px] relative z-10 ">
@@ -58,6 +84,7 @@ export const AsideMenu = () => {
             type="recap"
             name="recap"
             links={["About","Showroom","contacts"]}
+            color="#184dc4"
           />
           <MenuLinks
             type="Services"
@@ -68,6 +95,7 @@ export const AsideMenu = () => {
               "Water Treatment",
               "Plant Engineering",
             ]}
+            color="#184dc4"
           />
           <MenuLinks
             type="address"

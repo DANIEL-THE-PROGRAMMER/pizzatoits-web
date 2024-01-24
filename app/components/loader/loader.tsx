@@ -23,8 +23,6 @@ export const Loader = () => {
   const { loading, isLoading, mypage } = useMouseHoverAndMenuContext();
   const [y, setY] = useState("100%");
 
-  console.log("y:", y);
-
   useEffect(() => {
     async function AnimateNow() {
       if (loading) {

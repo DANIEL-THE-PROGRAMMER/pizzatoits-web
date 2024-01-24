@@ -35,6 +35,7 @@ export const MenuContext = createContext<{
   isLoading: Dispatch<SetStateAction<boolean>>;
   mypage: { index: string; name: string };
   changePage: Dispatch<SetStateAction<{ index: string; name: string }>>;
+  onCusor: (cursorType: string | false) => void;
 }>({
   isOpen: false,
   setOpen: () => {},
@@ -46,11 +47,18 @@ export const MenuContext = createContext<{
   isLoading: () => {},
   mypage: { index: "001", name: "home" },
   changePage: () => {},
+  onCusor: () => {},
 });
 
 const globalReducer = (state: any, action: { type: any; cursorType: any }) => {
   switch (action.type) {
     case "CURSOR_TYPE": {
+      return {
+        ...state,
+        cursorType: action.cursorType,
+      };
+    }
+    case "SECTION_NAME": {
       return {
         ...state,
         cursorType: action.cursorType,
@@ -82,12 +90,30 @@ const MouseContextProvider = (props: {
 
   const [state, dispatch] = useReducer(globalReducer, {
     cursorType: false,
-    cursorStyles: ["pointer", "hovered", "locked", "white"],
+    sectionname: "section",
+    cursorStyles: ["link", "gallery", "contact", "Bathroom furniture", "Comfort Environment", "Water Treatment", "Plant engineering", 'section'],
   });
 
   const [mypage, changePage] = useState({ index: "001", name: "home" });
 
   useEffect(() => {}, [loading]);
+
+  const onCusor = (cursorType: string | false) => {
+    if(cursorType === "section")
+    cursorType =
+      (state.cursorStyles.includes(cursorType) && cursorType) || false;
+    dispatch({ type: "CURSOR_TYPE", cursorType: cursorType });
+  };
+
+  useEffect(() => {
+    const cursor = document.querySelector(".cursor");
+    console.log(cursor);
+    if (state.cursorType) {
+      if (cursor) cursor.classList.add(`${state.cursorType}`);
+    } else {
+      if (cursor) cursor.classList.remove(cursor.classList[1]);
+    }
+  }, [state]);
 
   useEffect(() => {
     setPreloading(true);
@@ -100,10 +126,6 @@ const MouseContextProvider = (props: {
 
     CheckPreloading();
   }, []);
-
-  const cursorChangeHandler = (cursorType: React.SetStateAction<string>) => {
-    setCursorType(cursorType);
-  };
 
   return (
     <MouseContext.Provider value={[state, dispatch]}>
@@ -119,6 +141,7 @@ const MouseContextProvider = (props: {
           isLoading,
           mypage,
           changePage,
+          onCusor,
         }}
       >
         {props.children}
@@ -138,6 +161,7 @@ export const useMouseHoverAndMenuContext = () => {
     isLoading,
     mypage,
     changePage,
+    onCusor,
   } = useContext(MenuContext);
   return {
     state,
@@ -150,6 +174,7 @@ export const useMouseHoverAndMenuContext = () => {
     isLoading,
     mypage,
     changePage,
+    onCusor,
   };
 };
 

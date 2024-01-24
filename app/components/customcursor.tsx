@@ -1,17 +1,13 @@
 'use client'
 
-import { MouseContext } from "../context/globalcontext";
-import { useContext, useEffect, useState } from "react"
-import { useRef, MouseEvent } from "react";
-
-
-
+import {  useEffect } from "react"
+import { useRef } from "react";
+import { ArrowRight } from "./svgs/icon";
+import { useMouseHoverAndMenuContext } from "../context/globalcontext";
+ 
 
 
 const DotRing = () => {
-
-
-
     const cursor = useRef<HTMLDivElement>(null)
 
     const onMouseMove = (event: any) => {
@@ -22,6 +18,8 @@ const DotRing = () => {
         }
     }
 
+    const { state } = useMouseHoverAndMenuContext()
+
     useEffect(() => {
         document.addEventListener("mousemove", onMouseMove)
         return () => {
@@ -30,7 +28,9 @@ const DotRing = () => {
     },[])
 
     return (
-        <div className="cursor" ref={cursor}></div>
+        <div className="cursor " ref={cursor}>
+            <div className="arrowright"><ArrowRight /></div>
+        </div>
     );
 };
 

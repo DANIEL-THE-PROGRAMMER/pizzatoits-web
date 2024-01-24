@@ -52,4 +52,41 @@ html{
   will-change: width, height, transform, border;
   pointer-events: none;
   z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.cursor .arrowright{
+  display: none;
+}
+
+.asidemenu{
+  background: #fff;
+}
+
+.link{
+  width: 100px;
+  height: 100px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: hsla(0,0%,100%,.7);
+  border-radius: 10rem;
+  border: 1px solid var(--c-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background .5s cubic-bezier(.19,1,.22,1),color .5s cubic-bezier(.19,1,.22,1);
+  width: -moz-fit-content;
+  cursor: none;
+}
+
+.cursor.link .arrowright{
+  width: 24px;
+  display: block;
+  height: 24px;
+}
+
+
+
+
