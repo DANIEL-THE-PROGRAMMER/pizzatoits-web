@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";
 
+
 export const FurnitureSection = ({
   name,
   video,
@@ -21,19 +22,19 @@ export const FurnitureSection = ({
     }
   });
 
-  const { onCusor } = useMouseHoverAndMenuContext();
+  const { onCusor, dispatch, state } = useMouseHoverAndMenuContext();
 
   const handleMouseLeave = () => {
     const cursor = document.querySelector('.cursor')
-    if(cursor){
-      cursor.classList.remove(`${name}`)
-    }
+    dispatch({type: "SECTION_NAME", sectionName: "" })
   }
   
 
   return (
     <div
       className=""
+      onMouseEnter={() => dispatch({ type: "SECTION_NAME", sectionName: `${name}` })}
+      onMouseLeave={handleMouseLeave}
     >
       <div className="mx-auto w-[94vw]">
         <div className="mb-[40px] bg-accent h-[1px]"></div>

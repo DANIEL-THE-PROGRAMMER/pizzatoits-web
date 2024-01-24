@@ -50,7 +50,7 @@ export const MenuContext = createContext<{
   onCusor: () => {},
 });
 
-const globalReducer = (state: any, action: { type: any; cursorType: any }) => {
+const globalReducer = (state: any, action: { type: any; cursorType: any; sectionName?: any }) => {
   switch (action.type) {
     case "CURSOR_TYPE": {
       return {
@@ -61,7 +61,7 @@ const globalReducer = (state: any, action: { type: any; cursorType: any }) => {
     case "SECTION_NAME": {
       return {
         ...state,
-        cursorType: action.cursorType,
+        sectionName: action.sectionName,
       };
     }
     default: {
@@ -90,8 +90,17 @@ const MouseContextProvider = (props: {
 
   const [state, dispatch] = useReducer(globalReducer, {
     cursorType: false,
-    sectionname: "section",
-    cursorStyles: ["link", "gallery", "contact", "Bathroom furniture", "Comfort Environment", "Water Treatment", "Plant engineering", 'section'],
+    sectionName: "",
+    cursorStyles: [
+      "link",
+      "gallery",
+      "contact",
+      "Bathroom furniture",
+      "Comfort Environment",
+      "Water Treatment",
+      "Plant engineering",
+      "section",
+    ],
   });
 
   const [mypage, changePage] = useState({ index: "001", name: "home" });
@@ -99,7 +108,6 @@ const MouseContextProvider = (props: {
   useEffect(() => {}, [loading]);
 
   const onCusor = (cursorType: string | false) => {
-    if(cursorType === "section")
     cursorType =
       (state.cursorStyles.includes(cursorType) && cursorType) || false;
     dispatch({ type: "CURSOR_TYPE", cursorType: cursorType });
@@ -107,11 +115,20 @@ const MouseContextProvider = (props: {
 
   useEffect(() => {
     const cursor = document.querySelector(".cursor");
-    console.log(cursor);
+    const body = document.querySelector('body')
     if (state.cursorType) {
       if (cursor) cursor.classList.add(`${state.cursorType}`);
     } else {
       if (cursor) cursor.classList.remove(cursor.classList[1]);
+    }
+    if(state.sectionName){
+      cursor?.classList.remove(cursor.classList[1])
+      
+      if(body){
+        body.style.cursor="none"
+      }
+    }else {
+      if(body)body.style.cursor="auto"
     }
   }, [state]);
 

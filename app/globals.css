@@ -5,6 +5,7 @@
 
 body{
   overflow-x: hidden;
+  cursor: none ;
 }
 
 html{
@@ -57,9 +58,11 @@ html{
   align-items: center;
 }
 
-.cursor .arrowright{
+.cursor .arrowright,
+.cursor .section{
   display: none;
 }
+
 
 .asidemenu{
   background: #fff;
@@ -85,6 +88,20 @@ html{
   width: 24px;
   display: block;
   height: 24px;
+}
+
+
+.cursor .section,
+.cursor.link .section{
+  padding: 15px;
+  border: 1px solid #184dc4;
+  display: block;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: hsla(0,0%,100%,.7);
+  border-radius: 10rem;
+  min-width: 200px;
+  text-align: center;
 }
 
 
