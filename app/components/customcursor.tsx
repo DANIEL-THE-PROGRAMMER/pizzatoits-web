@@ -34,7 +34,7 @@ const DotRing = () => {
       <div className="arrowright">
         <ArrowRight />
       </div>
-      <div className={`${sectionName && "section"}`}>{state.sectionName}</div>
+      <div className={`${sectionName && "section"}`}>{state?.sectionName}</div>
     </div>
   );
 };

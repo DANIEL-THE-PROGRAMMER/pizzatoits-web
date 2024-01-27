@@ -6,6 +6,7 @@ import DotRing from "./components/customcursor";
 import { Loader } from "./components/loader/loader";
 import SmoothScroll from "./components/smoothscroll";
 import { Preloader } from "./components/preloader";
+import { Wrapper } from "./components/wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +32,7 @@ export default function RootLayout({
           <Preloader />
           <Loader />
           <DotRing />
-          {children}
+          <Wrapper>{children}</Wrapper>
         </MouseContextProvider>
       </body>
     </html>

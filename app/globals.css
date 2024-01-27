@@ -104,6 +104,22 @@ html{
   text-align: center;
 }
 
+.hero__video {
+  width: calc( calc(( 94vw - ( 12 - 1)* 40px )/ 12 ) *8 + 40px *7) ;
+  margin-top: -8%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.mgbtm{
+  margin-bottom: calc(4.16667vw + 60px)
+}
+
+.fntsize{
+  font-size: clamp(60px,14vw,280px)
+}
+
 
 
 

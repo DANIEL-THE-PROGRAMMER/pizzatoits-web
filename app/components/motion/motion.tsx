@@ -30,6 +30,42 @@ export const MotionDiv = ({ children, delay }: {children: React.ReactNode, delay
             <motion.div
                 initial={{ y : "100%" }}
                 ref={scope}
+                className="inline-block"
+            >
+                {children}
+            </motion.div>
+        </span>
+    )
+}
+
+
+export const MotionTranslate = ({ children, delay }: {children: React.ReactNode, delay?: number}) => {
+
+    const [scope, animate] = useAnimate()
+    const isInView = useInView(scope)
+
+
+    const [style, setStyle] = useState({
+        overflow : "hidden"
+    })
+   
+
+    useEffect(() => {
+        const animateElement = async () => {
+            if(isInView){
+                await animate(scope.current, { y:0,}, { ease: "linear", delay:delay, duration: 0.5 } )
+            }
+        }
+
+        animateElement()
+    },[isInView])
+
+    return (
+        <span style={style}>
+            <motion.div
+                initial={{ y : "100%" }}
+                ref={scope}
+                className="inline-block"
             >
                 {children}
             </motion.div>
