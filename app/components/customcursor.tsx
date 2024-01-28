@@ -8,11 +8,12 @@ import { useMouseHoverAndMenuContext } from "../context/globalcontext";
 const DotRing = () => {
   const cursor = useRef<HTMLDivElement>(null);
 
-  const { state } = useMouseHoverAndMenuContext();
+  const { sectionName } = useMouseHoverAndMenuContext();
 
-  const sectionName = state.sectionName.length
-    ? state.sectionName.split(" ")[0].toLowerCase()
+  const sName = sectionName.length
+    ? sectionName.split(" ")[0].toLowerCase()
     : "";
+
 
   const onMouseMove = (event: any) => {
     const { clientX, clientY } = event;
@@ -34,7 +35,7 @@ const DotRing = () => {
       <div className="arrowright">
         <ArrowRight />
       </div>
-      <div className={`${sectionName && "section"}`}>{state?.sectionName}</div>
+      <div className={`${sName && "section"}`}>{sName}</div>
     </div>
   );
 };

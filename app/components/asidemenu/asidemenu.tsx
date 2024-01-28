@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { MenuLogo } from "../svgs/logos";
 import Link from "next/link";
@@ -7,21 +7,22 @@ import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";
 import { useEffect } from "react";
 
 export const AsideMenu = () => {
-  const { isOpen, setOpen, onCusor } = useMouseHoverAndMenuContext();
+
+  const { isOpen, setOpen, onCusor } = useMouseHoverAndMenuContext()
 
   const handleMouseEnter = () => {
-    const cursor = document.querySelector(".cursor");
-    if (cursor) {
-      cursor.classList.add("asidemenu");
+    const cursor = document.querySelector('.cursor')
+    if(cursor){
+      cursor.classList.add('asidemenu')
     }
-  };
+  }
 
   const handleMouseLeave = () => {
-    const cursor = document.querySelector(".cursor");
-    if (cursor) {
-      cursor.classList.remove("asidemenu");
+    const cursor = document.querySelector('.cursor')
+    if(cursor){
+      cursor.classList.remove('asidemenu')
     }
-  };
+  }
 
   const style = {
     translate: "none",
@@ -31,13 +32,13 @@ export const AsideMenu = () => {
   };
 
   useEffect(() => {
-    const body = document.getElementsByTagName("body")[0];
-    if (isOpen) {
-      body.style.overflow = "hidden";
-    } else {
-      body.style.overflow = "scroll";
+    const body = document.getElementsByTagName('body')[0]
+    if(isOpen) {
+      body.style.overflow = "hidden"
+    }else {
+      body.style.overflow = "scroll"
     }
-  }, [isOpen]);
+  },[isOpen])
 
   return (
     <aside
@@ -48,10 +49,7 @@ export const AsideMenu = () => {
     >
       <div className="">
         <div className="h-[123px] flex items-center justify-between px-[40px] relative z-10 ">
-          <button
-            onClick={() => setOpen(false)}
-            className="group ouline-none flex items-center bg-[hsla(0,0%,100%,.2)] justify-center w-[111px] h-[47px] rounded-[10rem] text-textw font-neue border-[1px] border-accent backdrop-blur-[20px] text-2xl px-[4rem] relative overflow-hidden"
-          >
+          <button onClick={() => setOpen(false)} className="group ouline-none flex items-center bg-[hsla(0,0%,100%,.2)] justify-center w-[111px] h-[47px] rounded-[10rem] text-textw font-neue border-[1px] border-accent backdrop-blur-[20px] text-2xl px-[4rem] relative overflow-hidden">
             <span className="absolute h-full flex items-center group-hover:translate-y-[-100%] group-hover:transition-transform duration-[.5s] ease-[cubic-bezier((.19,1,.22,1)]">
               Close
             </span>
@@ -85,7 +83,7 @@ export const AsideMenu = () => {
           <MenuLinks
             type="recap"
             name="recap"
-            links={["About", "Showroom", "contacts"]}
+            links={["About","Showroom","contacts"]}
             color="#184dc4"
           />
           <MenuLinks

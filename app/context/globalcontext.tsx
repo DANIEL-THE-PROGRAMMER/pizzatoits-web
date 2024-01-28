@@ -36,6 +36,7 @@ export const MenuContext = createContext<{
   mypage: { index: string; name: string };
   changePage: Dispatch<SetStateAction<{ index: string; name: string }>>;
   onCusor: (cursorType: string | false) => void;
+  sectionName: string
 }>({
   isOpen: false,
   setOpen: () => {},
@@ -48,6 +49,7 @@ export const MenuContext = createContext<{
   mypage: { index: "001", name: "home" },
   changePage: () => {},
   onCusor: () => {},
+  sectionName: ""
 });
 
 const globalReducer = (state: any, action: { type: any; cursorType: any; sectionName?: any }) => {
@@ -102,6 +104,8 @@ const MouseContextProvider = (props: {
       "section",
     ],
   });
+
+  const { sectionName } = state
 
   const [mypage, changePage] = useState({ index: "001", name: "home" });
 
@@ -159,6 +163,7 @@ const MouseContextProvider = (props: {
           mypage,
           changePage,
           onCusor,
+          sectionName
         }}
       >
         {props.children}
@@ -179,6 +184,7 @@ export const useMouseHoverAndMenuContext = () => {
     mypage,
     changePage,
     onCusor,
+    sectionName
   } = useContext(MenuContext);
   return {
     state,
@@ -192,6 +198,7 @@ export const useMouseHoverAndMenuContext = () => {
     mypage,
     changePage,
     onCusor,
+    sectionName
   };
 };
 

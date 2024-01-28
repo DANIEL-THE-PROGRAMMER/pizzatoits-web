@@ -1,12 +1,13 @@
-import { MotionTranslate } from "../../motion/motion";
+import {  MotionTranslate } from "../../motion/motion";
 import { AboutSlider } from "./aboutslider";
 
 export const Team = () => {
-  const TEAM: Array<{ text: string; duration: number }> = [
-    { text: "T", duration: 0.1 },
-    { text: "EA", duration: 0.18 },
-    { text: "M", duration: 0.2 },
-  ];
+
+    const TEAM:  Array<{ text: string, duration : number  }> = [
+        { text: "T", duration: 0.1 },
+        { text: "EA", duration: 0.18 },
+        { text: "M", duration: 0.2 },
+    ]
 
   return (
     <div>
@@ -17,7 +18,7 @@ export const Team = () => {
             <span>About</span>
           </div>
           <div>
-            <span> </span>
+            <span>{" "}</span>
           </div>
           <div>
             <span>About</span>
@@ -26,11 +27,11 @@ export const Team = () => {
       </div>
       <div className="text-clamp text-textb font-dusk uppercase text-nowrap overflow-hidden whitespace-break-spaces flex justify-center">
         {TEAM.map((w, index) => {
-          return (
-            <MotionTranslate delay={w.duration} key={index}>
-              {w.text}
-            </MotionTranslate>
-          );
+            return (
+                <MotionTranslate delay={w.duration} key={index}>
+                    {w.text}
+                </MotionTranslate>
+            )
         })}
       </div>
       <AboutSlider />
