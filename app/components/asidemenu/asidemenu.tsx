@@ -1,6 +1,6 @@
 'use client'
 
-import { MenuLogo } from "../svgs/logos";
+import { MenuLogo } from "../../../svgs/logos";
 import Link from "next/link";
 import { MenuLinks } from "./meulink";
 import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";

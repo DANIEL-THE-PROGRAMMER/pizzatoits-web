@@ -1,74 +1,84 @@
-import {motion,useInView, useAnimate} from "framer-motion"
-import { useEffect, useState } from "react"
+"use client";
 
+import { motion, useInView, useAnimate } from "framer-motion";
+import { useEffect, useState } from "react";
 
-export const MotionDiv = ({ children, delay }: {children: React.ReactNode, delay?: number}) => {
+export const MotionDiv = ({
+  children,
+  delay,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) => {
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope, { once: false });
 
-    const [scope, animate] = useAnimate()
-    const isInView = useInView(scope, { once: false })
+  const [style, setStyle] = useState({
+    overflow: "hidden",
+  });
 
+  useEffect(() => {
+    const animateElement = async () => {
+      if (isInView) {
+        await animate(
+          scope.current,
+          { y: 0 },
+          { ease: "linear", delay: delay, duration: 0.5 }
+        );
+      } else {
+        await animate(
+          scope.current,
+          { y: "100%" },
+          { ease: "linear", delay: delay, duration: 0.5 }
+        );
+      }
+    };
 
-    const [style, setStyle] = useState({
-        overflow : "hidden"
-    })
-   
+    animateElement();
+  }, [isInView, animate, delay, scope]);
 
-    useEffect(() => {
-        const animateElement = async () => {
-            if(isInView){
-                await animate(scope.current, { y:0,}, { ease: "linear", delay:delay, duration: 0.5 } )
-            }else{
-                await animate(scope.current, { y:"100%",}, { ease: "linear", delay:delay, duration: 0.5 } )
-            }
-        }
+  return (
+    <span style={style}>
+      <motion.div initial={{ y: "100%" }} ref={scope} className="inline-block">
+        {children}
+      </motion.div>
+    </span>
+  );
+};
 
-        animateElement()
-    },[isInView])
+export const MotionTranslate = ({
+  children,
+  delay,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) => {
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
 
-    return (
-        <span style={style}>
-            <motion.div
-                initial={{ y : "100%" }}
-                ref={scope}
-                className="inline-block"
-            >
-                {children}
-            </motion.div>
-        </span>
-    )
-}
+  const [style, setStyle] = useState({
+    overflow: "hidden",
+  });
 
+  useEffect(() => {
+    const animateElement = async () => {
+      if (isInView) {
+        await animate(
+          scope.current,
+          { y: 0 },
+          { ease: "linear", delay: delay, duration: 0.5 }
+        );
+      }
+    };
 
-export const MotionTranslate = ({ children, delay }: {children: React.ReactNode, delay?: number}) => {
+    animateElement();
+  }, [isInView, animate, delay, scope]);
 
-    const [scope, animate] = useAnimate()
-    const isInView = useInView(scope)
-
-
-    const [style, setStyle] = useState({
-        overflow : "hidden"
-    })
-   
-
-    useEffect(() => {
-        const animateElement = async () => {
-            if(isInView){
-                await animate(scope.current, { y:0,}, { ease: "linear", delay:delay, duration: 0.5 } )
-            }
-        }
-
-        animateElement()
-    },[isInView])
-
-    return (
-        <span style={style}>
-            <motion.div
-                initial={{ y : "100%" }}
-                ref={scope}
-                className="inline-block"
-            >
-                {children}
-            </motion.div>
-        </span>
-    )
-}
+  return (
+    <span style={style}>
+      <motion.div initial={{ y: "100%" }} ref={scope} className="inline-block">
+        {children}
+      </motion.div>
+    </span>
+  );
+};

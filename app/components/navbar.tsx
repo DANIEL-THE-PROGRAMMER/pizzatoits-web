@@ -1,6 +1,6 @@
 "use client";
 
-import { Logo } from "./svgs/logos";
+import { Logo } from "../../svgs/logos";
 import { useMouseHoverAndMenuContext } from "../context/globalcontext";
 import Link from "next/link";
 import { GetPageNumber, Sleep } from "../utils/helper";

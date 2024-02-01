@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { Gallery } from "./components/section/gallery";
 import { Articles } from "./components/section/articles";

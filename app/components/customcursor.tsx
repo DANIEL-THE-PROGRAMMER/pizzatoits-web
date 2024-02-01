@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRef } from "react";
-import { ArrowRight } from "./svgs/icon";
+import { ArrowRight } from "../../svgs/icon";
 import { useMouseHoverAndMenuContext } from "../context/globalcontext";
 
 const DotRing = () => {

@@ -1,6 +1,5 @@
 export const Video = ({ name }: { name: string }) => {
 
-    
 
   return (
     <video

@@ -1,4 +1,4 @@
-"use client";
+
 
 import Link from "next/link";
 import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";

@@ -4,7 +4,7 @@ import { motion, animate } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";
-import { MenuLogo } from "../svgs/logos";
+import { MenuLogo } from "../../../svgs/logos";
 import { Sleep } from "@/app/utils/helper";
 
 export const Loader = () => {
@@ -62,7 +62,7 @@ export const Loader = () => {
     }
 
     AnimateNow();
-  }, [loading]);
+  }, [router, loading, mypage.name, pathname, isLoading, path, previous]);
 
   useEffect(() => {
     async function AnimateNow() {
@@ -103,9 +103,7 @@ export const Loader = () => {
     }
 
     AnimateNow();
-  }, [pathname]);
-
-
+  }, [loading, pathname, mypage.name, isLoading, path, previous]);
 
   return (
     <>
@@ -115,7 +113,7 @@ export const Loader = () => {
         ref={divFixed}
       >
         <motion.div
-          initial={{ y:y }}
+          initial={{ y: y }}
           className="absolute z-10 flex w-full h-full items-center justify-center"
           ref={divAbsolute}
         >

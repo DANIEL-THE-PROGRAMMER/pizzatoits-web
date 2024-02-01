@@ -26,7 +26,7 @@ export const Gallery = () => {
         <div className="flex fon">
             { Articles.map((word, index) => {
                 return (
-                    <div className=""></div>
+                    <div className="" key={index}></div>
                 )
             }) } 
         </div>
