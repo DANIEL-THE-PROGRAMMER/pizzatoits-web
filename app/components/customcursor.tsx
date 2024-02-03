@@ -4,16 +4,12 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { ArrowRight } from "../../svgs/icon";
 import { useMouseHoverAndMenuContext } from "../context/globalcontext";
+import { Cursor } from "../styles/globalstyles";
 
 const DotRing = () => {
   const cursor = useRef<HTMLDivElement>(null);
 
-  const { sectionName } = useMouseHoverAndMenuContext();
-
-  const sName = sectionName.length
-    ? sectionName.split(" ")[0].toLowerCase()
-    : "";
-
+  const { sectionName, cursorType, collabName } = useMouseHoverAndMenuContext();
 
   const onMouseMove = (event: any) => {
     const { clientX, clientY } = event;
@@ -31,12 +27,18 @@ const DotRing = () => {
   }, []);
 
   return (
-    <div className="cursor" ref={cursor}>
-      <div className="arrowright">
+    <Cursor
+      className={`${cursorType ? cursorType : ""} mycursor ${
+        sectionName ? "section" : ""
+      } ${collabName ? "collab" : ""}`}
+      ref={cursor}
+    >
+      <div className="arrowright w-[30px] h-[30px]">
         <ArrowRight />
       </div>
-      <div className={`${sName && "section"}`}>{sName}</div>
-    </div>
+      <div className="section">{sectionName}</div>
+      <div className="collab">{collabName}</div>
+    </Cursor>
   );
 };
 

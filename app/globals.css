@@ -24,6 +24,7 @@ html{
   --c-bg:242, 241, 228;
   --swiper-theme-color:0, 122, 255;
   --text-w:242, 241, 228;
+  --col-10:calc( calc(( 94vw - ( 12 - 1)* 40px )/ 12 ) *10 + 40px *9);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,69 +42,29 @@ html{
   margin: 0 auto;
 }
 
-.cursor{
-  position: fixed;
-  top: 400px;
-  left: 400px;
-  width: 10px;
-  height: 10px;
-  background: #184dc4;
-  border-radius: 100%;
-  transform: translate(-50%, -50%);
-  transition: all 0.1s ease-out;
-  transition-property: width, height, border;
-  will-change: width, height, transform, border;
-  pointer-events: none;
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cursor .arrowright,
-.cursor .section{
-  display: none;
-}
-
 
 .asidemenu{
   background: #fff;
 }
 
-.link{
-  width: 100px;
-  height: 100px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background: hsla(0,0%,100%,.7);
-  border-radius: 10rem;
-  border: 1px solid var(--c-accent);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background .5s cubic-bezier(.19,1,.22,1),color .5s cubic-bezier(.19,1,.22,1);
-  width: -moz-fit-content;
-  cursor: none;
-}
 
-.cursor.link .arrowright{
+.mycursor.link .arrowright{
   width: 24px;
   display: block;
   height: 24px;
 }
 
+.section, .collab{
+  display: none;
+}
 
-.cursor .section,
-.cursor.link .section{
-  padding: 15px;
-  border: 1px solid #184dc4;
+.mycursor .section,
+.mycursor .collab{
   display: block;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  background: hsla(0,0%,100%,.7);
-  border-radius: 10rem;
-  min-width: 200px;
-  text-align: center;
+}
+
+.mycursor .arrowright{
+  display: none;
 }
 
 .hero__video {
@@ -113,13 +74,16 @@ html{
   margin-left: auto;
 }
 
-
 .mgbtm{
   margin-bottom: calc(4.16667vw + 60px)
 }
 
 .fntsize{
   font-size: clamp(60px,14vw,280px)
+}
+
+.list{
+  width: var(--col-10);
 }
 
 

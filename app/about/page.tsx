@@ -3,6 +3,7 @@
 import { Video } from "../components/video";
 import { Team } from "../components/view/about/team";
 import { OurBrands } from "../components/view/about/ourbrands";
+import { Collaborators } from "../components/view/about/colaborator";
 
 export default function About() {
   return (
@@ -22,6 +23,7 @@ export default function About() {
       </div>
       <Team />
       <OurBrands  />
+      <Collaborators />
     </div>
   );
 }

@@ -1,5 +1,9 @@
+"use client";
+
 export const ArrowRight = () => {
   let color = "#184dc4";
+
+  /*if(typeof window === undefined) return  
 
   const cursor = document.querySelector(".cursor");
   if (cursor?.classList.contains("asidemenu")) {
@@ -7,7 +11,7 @@ export const ArrowRight = () => {
     color = "#fff";
   }else{
     color = "#184dc4";
-  }
+  }*/
 
   return (
     <svg
@@ -26,10 +30,12 @@ export const ArrowRight = () => {
 export const ArrowLink = () => {
   let color = "#184dc4";
 
+  /*if(typeof window === undefined) return 
+
   const cursor = document.querySelector(".cursor");
   if (cursor?.classList.contains("asidemenu")) {
     color = "#fff";
-  }
+  }*/
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

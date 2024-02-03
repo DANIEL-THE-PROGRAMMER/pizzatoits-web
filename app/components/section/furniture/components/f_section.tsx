@@ -25,7 +25,6 @@ export const FurnitureSection = ({
   const { onCusor, dispatch, state } = useMouseHoverAndMenuContext();
 
   const handleMouseLeave = () => {
-    const cursor = document.querySelector('.cursor')
     dispatch({type: "SECTION_NAME", sectionName: "" })
   }
   

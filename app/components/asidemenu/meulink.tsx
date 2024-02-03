@@ -1,5 +1,3 @@
-
-
 import Link from "next/link";
 import { useMouseHoverAndMenuContext } from "@/app/context/globalcontext";
 
@@ -20,13 +18,6 @@ export const MenuLinks = ({
 }) => {
   const { onCusor } = useMouseHoverAndMenuContext();
 
-  const handleMouseLeave = () => {
-    const cursor = document.querySelector('.cursor')
-    if(cursor){
-      cursor.classList.remove('link')
-    }
-  }
-  
   return (
     <div
       className={`font-neue grow text-textw relative ${
@@ -44,7 +35,7 @@ export const MenuLinks = ({
               key={index}
               className="overflow-hidden"
               onMouseEnter={() => onCusor("link")}
-              onMouseLeave={handleMouseLeave}
+              onMouseLeave={() => onCusor(false)}
             >
               <Link
                 href="/about"
@@ -81,12 +72,7 @@ export const HomeMenuLinks = ({
 }) => {
   const { onCusor } = useMouseHoverAndMenuContext();
 
-  const handleMouseLeave = () => {
-    const cursor = document.querySelector('.cursor')
-    if(cursor){
-      cursor.classList.remove('link')
-    }
-  }
+ 
   return (
     <div
       className={`font-neue grow text-accent relative ${
@@ -104,7 +90,7 @@ export const HomeMenuLinks = ({
               key={index}
               className="overflow-hidden"
               onMouseEnter={() => onCusor("link")}
-              onMouseLeave={handleMouseLeave}
+              onMouseLeave={() => onCusor(false)}
             >
               <Link
                 href="/about"

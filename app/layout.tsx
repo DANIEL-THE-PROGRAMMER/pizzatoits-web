@@ -7,6 +7,7 @@ import { Loader } from "./components/loader/loader";
 import SmoothScroll from "./components/smoothscroll";
 import { Preloader } from "./components/preloader";
 import { Wrapper } from "./components/wrapper";
+import StyledComponentsRegistry from "./lib/registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,12 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.variable} ${dusk.variable}`}>
-        <MouseContextProvider>
-          <Preloader />
-          <Loader />
-          <DotRing />
-          <Wrapper>{children}</Wrapper>
-        </MouseContextProvider>
+        <StyledComponentsRegistry>
+          <MouseContextProvider>
+            <Preloader />
+            <Loader />
+            <DotRing />
+            <Wrapper>{children}</Wrapper>
+          </MouseContextProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

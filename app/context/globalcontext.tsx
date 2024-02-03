@@ -36,7 +36,9 @@ export const MenuContext = createContext<{
   mypage: { index: string; name: string };
   changePage: Dispatch<SetStateAction<{ index: string; name: string }>>;
   onCusor: (cursorType: string | false) => void;
-  sectionName: string
+  sectionName: string;
+  cursorType: string | undefined;
+  collabName: string;
 }>({
   isOpen: false,
   setOpen: () => {},
@@ -49,10 +51,15 @@ export const MenuContext = createContext<{
   mypage: { index: "001", name: "home" },
   changePage: () => {},
   onCusor: () => {},
-  sectionName: ""
+  sectionName: "",
+  cursorType: undefined,
+  collabName: ""
 });
 
-const globalReducer = (state: any, action: { type: any; cursorType: any; sectionName?: any }) => {
+const globalReducer = (
+  state: any,
+  action: { type: any; cursorType: any; sectionName?: any; collabName?: any }
+) => {
   switch (action.type) {
     case "CURSOR_TYPE": {
       return {
@@ -64,6 +71,12 @@ const globalReducer = (state: any, action: { type: any; cursorType: any; section
       return {
         ...state,
         sectionName: action.sectionName,
+      };
+    }
+    case "COLLAB_NAME": {
+      return {
+        ...state,
+        collabName: action.collabName,
       };
     }
     default: {
@@ -84,7 +97,6 @@ const MouseContextProvider = (props: {
     | null
     | undefined;
 }) => {
-  const [cursorType, setCursorType] = useState("");
   const [isOpen, setOpen] = useState(false);
   const [isPreloading, setPreloading] = useState(true);
   const [loadPage, setLoadPage] = useState(false);
@@ -93,6 +105,7 @@ const MouseContextProvider = (props: {
   const [state, dispatch] = useReducer(globalReducer, {
     cursorType: false,
     sectionName: "",
+    collabName: "",
     cursorStyles: [
       "link",
       "gallery",
@@ -105,7 +118,7 @@ const MouseContextProvider = (props: {
     ],
   });
 
-  const { sectionName } = state
+  const { sectionName, cursorType, collabName } = state;
 
   const [mypage, changePage] = useState({ index: "001", name: "home" });
 
@@ -119,20 +132,20 @@ const MouseContextProvider = (props: {
 
   useEffect(() => {
     const cursor = document.querySelector(".cursor");
-    const body = document.querySelector('body')
+    const body = document.querySelector("body");
     if (state.cursorType) {
       if (cursor) cursor.classList.add(`${state.cursorType}`);
     } else {
       if (cursor) cursor.classList.remove(cursor.classList[1]);
     }
-    if(state.sectionName){
-      cursor?.classList.remove(cursor.classList[1])
-      
-      if(body){
-        body.style.cursor="none"
+    if (state.sectionName) {
+      cursor?.classList.remove(cursor.classList[1]);
+
+      if (body) {
+        body.style.cursor = "none";
       }
-    }else {
-      if(body)body.style.cursor="auto"
+    } else {
+      if (body) body.style.cursor = "auto";
     }
   }, [state]);
 
@@ -163,7 +176,9 @@ const MouseContextProvider = (props: {
           mypage,
           changePage,
           onCusor,
-          sectionName
+          sectionName,
+          cursorType,
+          collabName
         }}
       >
         {props.children}
@@ -184,7 +199,9 @@ export const useMouseHoverAndMenuContext = () => {
     mypage,
     changePage,
     onCusor,
-    sectionName
+    sectionName,
+    cursorType,
+    collabName
   } = useContext(MenuContext);
   return {
     state,
@@ -198,7 +215,9 @@ export const useMouseHoverAndMenuContext = () => {
     mypage,
     changePage,
     onCusor,
-    sectionName
+    sectionName,
+    cursorType,
+    collabName
   };
 };
 
